@@ -30,14 +30,24 @@ function draw() {
   }
 }
 
-function mousePressed() {
+function mouseClicked() {
   for(var i = 0; i < cells.length; i++) {
     if(cells[i].isOverCell(mouseX, mouseY)) {
       if (cells[i].stage == 4) {
-        cells.push(new Cell(contents,createVector(cells[i].pos.x + random(-50,50), cells[i].pos.y + random(-50,50))))
+        cells.push(new Cell(contents,createVector(cells[i].pos.x + random(-75,75), cells[i].pos.y + random(-75,75))))
       } 
       cells[i].changeState();
 
+    }
+  }
+}
+
+function mouseDragged() {
+  for(var i = 0; i < cells.length; i++) {
+    if(cells[i].isOverCell(mouseX, mouseY)) {
+      //console.log("DRAGGED")
+      cells[i].pos.x = mouseX
+      cells[i].pos.y = mouseY
     }
   }
 }
